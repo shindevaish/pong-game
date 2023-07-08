@@ -9,30 +9,44 @@ p=turtle.Turtle()
 p.speed(0)
 p.penup()
 p.color("white")
+p.goto(0,180)
+p.write("WELCOME TO PONG GAME.",align="center",font=("forte",27,"bold"))
+p.hideturtle()
 
-p.goto(0,80)
-p.write("             WELCOME TO PONG GAME.\n                           RULES:\nTo move right paddle up and down - 'i' and 'm' \nTo move left paddle up and down - 'e' and 'x' ",align="center",font=("forte",24,"bold"))
+p5=turtle.Turtle()
+p5.speed(0)
+p5.penup()
+p5.color("white")
+p5.goto(0,60)
+p5.write("                             RULES:\nTo move right paddle up and down - 'i' and 'm' \nTo move left paddle up and down - 'e' and 'x' ",align="center",font=("forte",24,"bold"))
+p5.hideturtle()
 
 p1=turtle.Turtle()
 p1.penup()
 p1.pencolor("white")
-p1.goto(0,-100)
-p1.write("PRESS SPACE TO START THE GAME.",align="center",font=("forte",27,"bold"))
-turtle.hideturtle()
+p1.goto(0,-200)
+p1.write("PRESS SPACE TO TRY A DEMO.\n                     OR\nPRESS 'a' TO START THE GAME",align="center",font=("forte",25,"bold"))
+p1.hideturtle()
 
+p2=turtle.Turtle()
+p3=turtle.Turtle()
+leftpaddle=turtle.Turtle()
+rightpaddle=turtle.Turtle()
+ball=turtle.Turtle()
+p4=turtle.Turtle()
 
 #demo
 def pong_demo():
     p.clear()
     p1.clear()
-
+    p5.clear()
+    
     #screen
     screen=turtle.Screen()
     screen.title("PONG GAME")
     screen.bgcolor("midnightblue")
     screen.setup(width=1000,height=800)
 
-    leftpaddle=turtle.Turtle()
     leftpaddle.shape('square')
     leftpaddle.color('white')
     leftpaddle.speed(0)
@@ -40,35 +54,38 @@ def pong_demo():
     leftpaddle.penup()
     leftpaddle.goto(-485,0)
 
-    rightpaddle=turtle.Turtle()
     rightpaddle.shape('square')
     rightpaddle.color('white')
     rightpaddle.speed(0)
     rightpaddle.shapesize(stretch_len=1.5,stretch_wid=8)
     rightpaddle.penup()
     rightpaddle.goto(480,0)
-    
-    pen=turtle.Turtle()
-    pen.speed(0)
-    pen.penup()
-    pen.color("Yellow")
-    pen.pensize(5)
-    pen.goto(0,360)
-    pen.write("PONG DEMO" , align="Center", font=("Forte", 25, "bold"))
 
+    p2.speed(0)
+    p2.penup()
+    p2.color("Yellow")
+    p2.goto(0,360)
+    p2.write("PONG DEMO" , align="Center", font=("Forte", 29, "bold"))
+    p2.hideturtle()
  
 ##creating ball
-    ball=turtle.Turtle()
     ball.shape('circle')
     ball.color('yellow')
     ball.penup()
 
-    i=turtle.Turtle()
-    i.speed(0)
-    i.penup()
-    i.goto(0,150)
-    i.color("White")
-    i.write(" PRESS 'i'\n PRESS 'm'\n PRESS 'e'\n PRESS 'x' ",align="Center",font=("Forte",30,"bold"))
+    p3.speed(0)
+    p3.penup()
+    p3.goto(0,150)
+    p3.color("White")
+    p3.write(" PRESS 'i'\n PRESS 'm'\n PRESS 'e'\n PRESS 'x' ",align="Center",font=("Forte",27,"bold"))
+    p3.hideturtle()
+    
+    p4.speed(0)
+    p4.penup()
+    p4.goto(0,-200)
+    p4.color("White")
+    p4.write("PRESS 'a'  TO START THE GAME.", align="Center",font=("Forte",25,"bold"))
+    p4.hideturtle()
     
     def pressi():
         l=rightpaddle.ycor()
@@ -105,7 +122,10 @@ def pong_demo():
 def pong_game():
     p.clear()
     p1.clear()
-    
+    p2.clear()
+    p3.clear()
+    p4.clear()
+    p5.clear()
     ##screen2
     sc=turtle.Screen()
     sc.title("PONG GAME")
@@ -113,7 +133,6 @@ def pong_game():
     sc.setup(width=1000, height=800)
 
     #creating left paddle
-    leftpaddle=turtle.Turtle()
     leftpaddle.shape('square')
     leftpaddle.color('white')
     leftpaddle.speed(0)
@@ -123,7 +142,6 @@ def pong_game():
     
 
     #creating right paddle
-    rightpaddle=turtle.Turtle()
     rightpaddle.shape('square')
     rightpaddle.color('white')
     rightpaddle.speed(0)
@@ -138,12 +156,11 @@ def pong_game():
     pen.color("Yellow")
     pen.pensize(5)
     pen.goto(0,360)
-    pen.write("Left_Player : 0   Right_Player : 0 " , align="Center", font=("Forte", 25, "bold"))
-
+    pen.write("Left_Player : 0   Right_Player : 0 " , align="Center", font=("Forte", 30, "bold"))
+    pen.hideturtle()
     leftplayer,rightplayer=0,0
 
     #creating ball
-    ball=turtle.Turtle()
     ball.shape('circle')
     ball.color('yellow')
     ball.speed(100)
@@ -207,8 +224,8 @@ def pong_game():
             ball.dx *=-1
             rightplayer +=1
             pen.clear()
-            pen.write("Left_Player : {}   Right_Player : {}".format (leftplayer, rightplayer), align="center", font=("Forte",20 ,"normal"))
-
+            pen.write("Left_Player : {}   Right_Player : {}".format (leftplayer, rightplayer), align="center", font=("Forte",30 ,"normal"))
+            pen.hideturtle()
             
         if ball.xcor()<-500:
             ball.hideturtle()
@@ -217,8 +234,8 @@ def pong_game():
             ball.dx *=-1
             leftplayer +=1
             pen.clear()
-            pen.write("Left_Player : {}   Right_Player : {}".format(leftplayer, rightplayer), align="center", font=("Forte",20 ,"normal"))
-           
+            pen.write("Left_Player : {}   Right_Player : {}".format(leftplayer, rightplayer), align="center", font=("Forte",30 ,"normal"))
+            pen.hideturtle()
 
     #ball and paddle collision        
         if (ball.xcor()>460) and (ball.ycor()>rightpaddle.ycor() - 70) and (ball.ycor()<rightpaddle.ycor() + 70):
@@ -229,7 +246,15 @@ def pong_game():
 
 screen.listen()
 screen.onkeypress(pong_demo,"space")
-screen.onkeypress(pong_game,"v")
+screen.onkeypress(pong_game,"a")
+
+
+
+              
+
+
+
+
 
 
 
