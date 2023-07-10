@@ -169,7 +169,7 @@ def pong_game():
     ball.dx=3
     ball.dy=6
 
-    #movement of paddle
+    #movement of the paddle
     def leftpaddle_up():
         l=leftpaddle.ycor()
         l+=30
@@ -247,19 +247,3 @@ def pong_game():
 screen.listen()
 screen.onkeypress(pong_demo,"space")
 screen.onkeypress(pong_game,"a")
-
-
-
-              
-
-
-
-
-
-
-
-              
-
-
-
-
