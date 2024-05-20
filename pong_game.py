@@ -168,9 +168,8 @@ def pong_game():
 
     #creating ball
     ball.shape('circle')
-    ball.color('yellow')
-    for i in range(1,11):
-        ball.speed(i)
+    ball.color('yellow')    
+    ball.speed(5)
     ball.penup()
 
     ball.dx=3
@@ -246,10 +245,10 @@ def pong_game():
 
     #ball and paddle collision        
         if (ball.xcor()>360) and (ball.ycor()>rightpaddle.ycor() - 70) and (ball.ycor()<rightpaddle.ycor() + 70):
-            ball.dx *= -1
+            ball.dx *= -1.2
 
         if (ball.xcor()<-360) and (ball.ycor()>leftpaddle.ycor() - 70) and (ball.ycor()<leftpaddle.ycor() + 70):
-            ball.dx *= -1
+            ball.dx *= -1.2
 
         #stops the game if it goes maximum to 3 and result the winner person
         if leftplayer==3 or rightplayer==3:
