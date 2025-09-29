@@ -18,7 +18,7 @@ p5.speed(0)
 p5.penup()
 p5.color("white")
 p5.goto(0,60)
-p5.write("                             RULES:\nTo move right paddle up and down - 'i' and 'm' \nTo move left paddle up and down - 'e' and 'x' ",align="center",font=("forte",22,"bold"))
+p5.write("                                  RULES:\nTo move right paddle up and down - 'i' and 'm' \nTo move left paddle up and down - 'e' and 'x' ",align="center",font=("forte",22,"bold"))
 p5.hideturtle()
 
 p1=turtle.Turtle()
@@ -36,6 +36,7 @@ ball=turtle.Turtle()
 p4=turtle.Turtle()
 p6=turtle.Turtle()
 p7=turtle.Turtle()
+p8=turtle.Turtle()
 
 
 #demo
@@ -90,35 +91,35 @@ def pong_demo():
     p4.write("PRESS 'a'  TO START THE GAME.", align="Center",font=("Forte",22,"bold"))
     p4.hideturtle()
     
-    def pressi():
+    def press_i():
         l=rightpaddle.ycor()
         l+=30
         if l<235:
             rightpaddle.sety(l)
 
-    def pressm():
+    def press_m():
         l=rightpaddle.ycor()
         l-=30
         if l>-235:
             rightpaddle.sety(l)
 
-    def presse():
+    def press_e():
         l=leftpaddle.ycor()
         l+=30
         if l<235:
             leftpaddle.sety(l)
 
-    def pressx():
+    def press_x():
         l=leftpaddle.ycor()
         l-=30
         if l>-235:
             leftpaddle.sety(l)
     
     screen.listen()
-    screen.onkeypress(pressi,"i")
-    screen.onkeypress(pressm,"m")
-    screen.onkeypress(presse,"e")
-    screen.onkeypress(pressx,"x")
+    screen.onkeypress(press_i,"i")
+    screen.onkeypress(press_m,"m")
+    screen.onkeypress(press_e,"e")
+    screen.onkeypress(press_x,"x")
 
     
 def pong_game():
@@ -128,6 +129,8 @@ def pong_game():
     p3.clear()
     p4.clear()
     p5.clear()
+    p8.clear()
+    p7.clear()
     
     ##screen2
     sc=turtle.Screen()
@@ -256,12 +259,19 @@ def pong_game():
             ball.hideturtle()
             p7.speed(0)
             p7.penup()
-            p7.goto(0,0)
+            p7.goto(0,120)
             p7.color('white')
             if leftplayer<rightplayer:
-                p7.write("Winner of this match is {}".format(a),align="center",font=("forte",23,"bold"))
+                p7.write("Winner of this match is {}".format(a),align="center",font=("forte",27,"bold"))
             else:
-                p7.write("Winner of this match is {}".format(b),align="center",font=("forte",23,"bold"))
+                p7.write("Winner of this match is {}".format(b),align="center",font=("forte",27,"bold"))
+                p3.speed(0)
+            # p8.penup()
+            # p8.goto(0,0)
+            # p8.color("White")
+            # p8.write("To Play Again: Press I",align="Center",font=("Forte",23,"bold"))
+            # p8.hideturtle()
+            # screen.onkeypress(pong_game,"i")
 
             
         
