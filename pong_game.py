@@ -1,4 +1,5 @@
 import turtle
+import time
 
 #screen
 screen=turtle.Screen()
@@ -131,6 +132,7 @@ def pong_game():
     p5.clear()
     p8.clear()
     p7.clear()
+    p8.clear()
     
     ##screen2
     sc=turtle.Screen()
@@ -212,7 +214,8 @@ def pong_game():
 
     #movement of ball
 
-    while True:
+    game_playing = True
+    while game_playing:
         sc.update()
 
         ball.setx(ball.xcor()+ball.dx)
@@ -256,22 +259,38 @@ def pong_game():
         #stops the game if it goes maximum to 3 and result the winner person
         if leftplayer==3 or rightplayer==3:
             ball.goto(0,0)
-            ball.hideturtle()
             p7.speed(0)
             p7.penup()
             p7.goto(0,120)
             p7.color('white')
             if leftplayer<rightplayer:
-                p7.write("Winner of this match is {}".format(a),align="center",font=("forte",27,"bold"))
+                p7.write("Winner of this match is {}".format(a),align="center",font=("forte",29,"bold"))
             else:
-                p7.write("Winner of this match is {}".format(b),align="center",font=("forte",27,"bold"))
+                p7.write("Winner of this match is {}".format(b),align="center",font=("forte",29,"bold"))
                 p3.speed(0)
-            # p8.penup()
-            # p8.goto(0,0)
-            # p8.color("White")
-            # p8.write("To Play Again: Press I",align="Center",font=("Forte",23,"bold"))
-            # p8.hideturtle()
-            # screen.onkeypress(pong_game,"i")
+            time.sleep(5)
+
+            # ask to play again or want to quit
+            p8.speed(0)
+            p8.penup()
+            p8.goto(0,-100)
+            p8.color('white')
+            p8.write('Press y if want to play again.\n     Press q if want to quit.', align = 'center', font = ('Forte', 22, 'bold'))
+            p8.hideturtle()
+
+            def play_again():
+                pen.clear()
+                p7.clear()
+                p8.clear()
+                sc.update()
+                pong_game()
+            
+            def quit_game():
+                sc.bye()
+            sc.onkeypress(play_again,'y')
+            sc.onkeypress(quit_game,'q')
+            game_playing = False
+
 
             
         
